@@ -3,16 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #ddf6f4;
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 
 body {
   color: var(--foreground);
@@ -23,5 +18,58 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(
+    to right,
+    #ff0000,
+    #ff7f00,
+    #00ff00,
+    #0000ff,
+    #8b00ff, 
+    #0000ff, 
+    #00ff00, 
+    #ff7f00, 
+    #ff0000
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow-animation 30s linear infinite;
+  background-size: 400% 100%;
+}
+
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 400% 0;
   }
 }
